@@ -21,7 +21,7 @@ import java.util.Map;
 public class ConsumerConfiguration {
 
     @Bean
-    public ConsumerFactory<String, Place> consumerFactory()
+    public ConsumerFactory<String, Place> consumerFactory1()
     {
         Map<String,Object> config= new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ApplicationConstant.LOCAL_HOST_PORT);
@@ -30,11 +30,29 @@ public class ConsumerConfiguration {
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config,new StringDeserializer(),new JsonDeserializer<>(Place.class));
     }
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory concurrentKafkaListenerContainerFactory()
+     @Bean(name = "kafkaListenerContainerFactory1")
+    public ConcurrentKafkaListenerContainerFactory concurrentKafkaListenerContainerFactory1()
     {
         ConcurrentKafkaListenerContainerFactory<String,Place> factory=new ConcurrentKafkaListenerContainerFactory();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(consumerFactory1());
+        return factory;
+    }
+
+    @Bean
+    public ConsumerFactory<String, Place> consumerFactory2()
+    {
+        Map<String,Object> config= new HashMap<>();
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ApplicationConstant.LOCAL_HOST_PORT);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG,ApplicationConstant.GROUP_ID);
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config,new StringDeserializer(),new JsonDeserializer<>(Place.class));
+    }
+    @Bean(name = "kafkaListenerContainerFactory2")
+    public ConcurrentKafkaListenerContainerFactory concurrentKafkaListenerContainerFactory2()
+    {
+        ConcurrentKafkaListenerContainerFactory<String,Place> factory=new ConcurrentKafkaListenerContainerFactory();
+        factory.setConsumerFactory(consumerFactory2());
         return factory;
     }
 }

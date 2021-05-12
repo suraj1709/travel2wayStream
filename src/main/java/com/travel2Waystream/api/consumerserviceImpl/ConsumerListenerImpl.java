@@ -14,10 +14,20 @@ public class ConsumerListenerImpl implements ConsumerListener {
     private final Logger log= LoggerFactory.getLogger(this.getClass());
 
     @Override
-    @KafkaListener(topics = ApplicationConstant.TOPIC_NAME,groupId = ApplicationConstant.GROUP_ID,containerFactory = "concurrentKafkaListenerContainerFactory")
-    public void consume(Place place) {
+    @KafkaListener(topics = ApplicationConstant.TOPIC_NAME,groupId = ApplicationConstant.GROUP_ID,containerFactory = "kafkaListenerContainerFactory1")
+    public void consume1(Place place) {
         log.info("Message Received from Topic : {}",ApplicationConstant.TOPIC_NAME);
-        System.out.println("message received :"+place);
+        System.out.println("message received 1:"+place);
+
+
+
+    }
+
+    @Override
+    @KafkaListener(topics = ApplicationConstant.TOPIC_NAME,groupId = ApplicationConstant.GROUP_ID1,containerFactory = "kafkaListenerContainerFactory2")
+    public void consume2(Place place) {
+        log.info("Message Received from Topic : {}",ApplicationConstant.TOPIC_NAME);
+        System.out.println("message received 2 :"+place);
 
     }
 }

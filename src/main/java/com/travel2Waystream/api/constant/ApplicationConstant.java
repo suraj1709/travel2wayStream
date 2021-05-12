@@ -6,6 +6,8 @@ public class ApplicationConstant {
     public static final String GROUP_ID="travel_id";
     public static final String LOCAL_HOST_PORT="127.0.0.1:9092";
 
+    public static final String GROUP_ID1="travel_id1";
+
 
 
 
