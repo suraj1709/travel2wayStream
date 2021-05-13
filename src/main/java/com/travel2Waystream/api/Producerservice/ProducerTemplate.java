@@ -4,5 +4,5 @@ import com.travel2Waystream.api.model.Place;
 
 public interface ProducerTemplate {
 
-    public String produce(Place place);
+    String produce(Place place);
 }
