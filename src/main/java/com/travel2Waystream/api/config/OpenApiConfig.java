@@ -17,7 +17,7 @@ public class OpenApiConfig {
                 .components(new Components())
                 .info(new Info()
                         .title("kafka Stream  Application API")
-                        .version("1.001").description("Mongo DB Api")
+                        .version("1.001").description("kafka Stream Api")
                         .termsOfService("http://swagger.io/terms/"));
 
     }

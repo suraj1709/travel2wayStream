@@ -43,7 +43,7 @@ public class ConsumerConfiguration {
     {
         Map<String,Object> config= new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, ApplicationConstant.LOCAL_HOST_PORT);
-        config.put(ConsumerConfig.GROUP_ID_CONFIG,ApplicationConstant.GROUP_ID);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG,ApplicationConstant.GROUP_ID1);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config,new StringDeserializer(),new JsonDeserializer<>(Place.class));
